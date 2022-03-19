@@ -5,39 +5,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tpmod4_1302200039
+namespace modul4_1302200039
 {
     public class ClassMain
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            String nama = "Rifki";
-            HaloGeneric.SapaUser<string>(ref nama);
-            DataGeneric<string> dataGeneric = new DataGeneric<string>("1302200039");
-            dataGeneric.PrintData();
+            Penjumlahan<long> first = new Penjumlahan <long>();
+            first.value = 13;
+            
+            Penjumlahan<long> second = new Penjumlahan<long>();
+            second.value = 02;
+            
+            Penjumlahan<long> third = new Penjumlahan<long>();
+            third.value = 20;
+
+            Penjumlahan<long> equals = new Penjumlahan<long>();
+            equals.value = first.value + second.value + third.value;
+            equals.JumlahTigaAngka();
+
+            storedData<long> satu = new storedData<long>();
+            satu.SimpleDataBase = 13;
+            satu.PrintAllData();
+           
+            storedData<long> dua = new storedData<long>();
+            dua.SimpleDataBase = 02;
+            dua.PrintAllData();
+            
+            storedData<long> tiga = new storedData<long>();
+            tiga.SimpleDataBase = 20;
+            tiga.PrintAllData();
+
+            DateTime DOB = Convert.ToDateTime(Console.ReadLine());
+            
         }
     }
 
-    class HaloGeneric
+    public class Penjumlahan<T>
     {
-        public static void SapaUser<T>(ref T nama)
-        {
-            Console.WriteLine("Halo user " + nama);
-        }
+      public T value { get; set; }
+        public void JumlahTigaAngka() => Console.WriteLine($"HASIL PENJUMLAHAN 3 ANGKA : {value}");
+
     }
-
-    public class DataGeneric<T>
+    public class storedData<T>
     {
-        private T Data;
-
-        public DataGeneric(T Data)
-        {
-            this.Data = Data;
-        }
-
-        public void PrintData()
-        {
-            Console.WriteLine("Data yang tersimpan adalah " + Data);
-        }
+        public T SimpleDataBase { get; set; }
+        public void AddNewData(T Data) => SimpleDataBase = Data;
+        
+        public void PrintAllData() => Console.WriteLine("Data yang tersimpan adalah " + SimpleDataBase);
+        
+    }
+    public class inputDates<Dates>{
+        public DateTime Date { get; set; }
+        public void setTime(DateTime Time) => Date = Time;
+       
     }
 }
+
+    
